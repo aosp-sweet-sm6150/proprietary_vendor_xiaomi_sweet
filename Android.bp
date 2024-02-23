@@ -1522,24 +1522,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-	name: "fingerprint.fpc.sm6150",
-	owner: "xiaomi",
-	strip: {
-		none: true,
-	},
-	target: {
-		android_arm64: {
-			srcs: ["proprietary/vendor/lib64/hw/fingerprint.fpc.sm6150.so"],
-		},
-	},
-	compile_multilib: "64",
-	check_elf_files: false,
-	relative_install_path: "hw",
-	prefer: true,
-	soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
 	name: "libFaceGrade",
 	owner: "xiaomi",
 	strip: {
@@ -3276,6 +3258,22 @@ prebuilt_rfsa {
 	owner: "xiaomi",
 	src: "proprietary/vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so",
 	relative_install_path: "adsp",
+	soc_specific: true,
+}
+
+dex_import {
+	name: "com.fingerprints.extension",
+	owner: "xiaomi",
+	jars: ["proprietary/vendor/framework/com.fingerprints.extension.jar"],
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "android.hardware.biometrics.fingerprint@2.1-service",
+	owner: "xiaomi",
+	src: "proprietary/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml",
+	filename_from_src: true,
+	sub_dir: "vintf/manifest",
 	soc_specific: true,
 }
 
